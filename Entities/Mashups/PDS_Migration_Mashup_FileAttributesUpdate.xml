@@ -1,0 +1,1237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Entities
+ majorVersion="9"
+ minorVersion="1"
+ universal="">
+    <Mashups>
+        <Mashup
+         aspect.isFlex="true"
+         aspect.isResponsive="true"
+         aspect.mashupType="mashup"
+         columns="0.0"
+         description=""
+         documentationContent=""
+         homeMashup=""
+         name="PDS_Migration_Mashup_FileAttributesUpdate"
+         projectName="PDS_Utilities_Migration"
+         rows="0.0"
+         tags="">
+            <avatar></avatar>
+            <DesignTimePermissions>
+                <Create></Create>
+                <Read></Read>
+                <Update></Update>
+                <Delete></Delete>
+                <Metadata></Metadata>
+            </DesignTimePermissions>
+            <RunTimePermissions></RunTimePermissions>
+            <VisibilityPermissions>
+                <Visibility></Visibility>
+            </VisibilityPermissions>
+            <ConfigurationTableDefinitions></ConfigurationTableDefinitions>
+            <ConfigurationTables>
+                <ConfigurationTable
+                 dataShapeName=""
+                 description="Mashup Mobile Settings"
+                 isHidden="true"
+                 isMultiRow="false"
+                 name="MobileSettings"
+                 ordinal="0">
+                    <DataShape>
+                        <FieldDefinitions>
+                            <FieldDefinition
+                             aspect.defaultValue="false"
+                             aspect.friendlyName="Disable Zoom"
+                             baseType="BOOLEAN"
+                             description="Disables zooming in and out within the mashup"
+                             name="disableZoom"
+                             ordinal="0"></FieldDefinition>
+                            <FieldDefinition
+                             aspect.defaultValue="true"
+                             aspect.friendlyName="Full Screen Mode"
+                             baseType="BOOLEAN"
+                             description="Open the mashup in full screen mode"
+                             name="fullScreenMode"
+                             ordinal="0"></FieldDefinition>
+                            <FieldDefinition
+                             aspect.friendlyName="Height"
+                             baseType="STRING"
+                             description="The height of the mashup page"
+                             name="height"
+                             ordinal="0"></FieldDefinition>
+                            <FieldDefinition
+                             aspect.defaultValue="device-height"
+                             aspect.friendlyName="Height Type"
+                             baseType="STRING"
+                             description="Use the height of the device display, or a custom height (in px)"
+                             name="heightType"
+                             ordinal="0"></FieldDefinition>
+                            <FieldDefinition
+                             aspect.defaultValue="1.0"
+                             aspect.friendlyName="Initial Scale"
+                             baseType="NUMBER"
+                             description="The initial zoom scale when the mashup is loaded for the first time"
+                             name="initialScale"
+                             ordinal="0"></FieldDefinition>
+                            <FieldDefinition
+                             aspect.friendlyName="Shortcut Icon Title"
+                             baseType="STRING"
+                             description="A title for the mashup shortcut on the iOS home screen"
+                             name="iosShortcutIconTitle"
+                             ordinal="0"></FieldDefinition>
+                            <FieldDefinition
+                             aspect.defaultValue="black-translucent"
+                             aspect.friendlyName="Status Bar Appearance"
+                             baseType="STRING"
+                             description="The style of the iOS status bar"
+                             name="iosStatusBarAppearance"
+                             ordinal="0"></FieldDefinition>
+                            <FieldDefinition
+                             aspect.defaultValue="10.0"
+                             aspect.friendlyName="Maximum Scale"
+                             baseType="NUMBER"
+                             description="The maximum scale that users can zoom out to"
+                             name="maximumScale"
+                             ordinal="0"></FieldDefinition>
+                            <FieldDefinition
+                             aspect.defaultValue="0.1"
+                             aspect.friendlyName="Minimum Scale"
+                             baseType="NUMBER"
+                             description="The minimum scale that users can zoom out to"
+                             name="minimumScale"
+                             ordinal="0"></FieldDefinition>
+                            <FieldDefinition
+                             aspect.friendlyName="Width"
+                             baseType="STRING"
+                             description="The width of the mashup page"
+                             name="width"
+                             ordinal="0"></FieldDefinition>
+                            <FieldDefinition
+                             aspect.defaultValue="device-width"
+                             aspect.friendlyName="Width Type"
+                             baseType="STRING"
+                             description="Use the width of the device display, or a custom width (in px)"
+                             name="widthType"
+                             ordinal="0"></FieldDefinition>
+                        </FieldDefinitions>
+                    </DataShape>
+                    <Rows>
+                        <Row>
+                            <disableZoom>false</disableZoom>
+                            <fullScreenMode>true</fullScreenMode>
+                            <height>
+                            <![CDATA[
+                            device-height
+                            ]]>
+                            </height>
+                            <heightType>
+                            <![CDATA[
+                            device-height
+                            ]]>
+                            </heightType>
+                            <initialScale>1.0</initialScale>
+                            <iosShortcutIconTitle></iosShortcutIconTitle>
+                            <iosStatusBarAppearance>
+                            <![CDATA[
+                            black-translucent
+                            ]]>
+                            </iosStatusBarAppearance>
+                            <maximumScale>10.0</maximumScale>
+                            <minimumScale>0.1</minimumScale>
+                            <width>
+                            <![CDATA[
+                            device-width
+                            ]]>
+                            </width>
+                            <widthType>
+                            <![CDATA[
+                            device-width
+                            ]]>
+                            </widthType>
+                        </Row>
+                    </Rows>
+                </ConfigurationTable>
+            </ConfigurationTables>
+            <ParameterDefinitions></ParameterDefinitions>
+            <Things></Things>
+            <ThingShapes></ThingShapes>
+            <ThingTemplates></ThingTemplates>
+            <mashupContent>
+            <![CDATA[
+            {
+              "CustomMashupCss" : "",
+              "Data" : {
+                "Session" : {
+                  "DataName" : "Session",
+                  "EntityName" : "",
+                  "EntityType" : "Session",
+                  "Id" : "session",
+                  "Services" : [ {
+                    "APIMethod" : "post",
+                    "Characteristic" : "Services",
+                    "Id" : "SessionInterface",
+                    "Name" : "GetGlobalSessionValues",
+                    "Parameters" : { },
+                    "RefreshInterval" : 0,
+                    "Target" : "GetGlobalSessionValues"
+                  } ]
+                },
+                "Things_PDS_Migration_Utilities" : {
+                  "DataName" : "Things_PDS_Migration_Utilities",
+                  "EntityName" : "PDS_Migration_Utilities",
+                  "EntityType" : "Things",
+                  "Id" : "cd26a9e0-260f-4494-9d12-4fb5db0343b6",
+                  "RefreshInterval" : 0,
+                  "Services" : [ {
+                    "APIMethod" : "post",
+                    "Characteristic" : "Services",
+                    "Id" : "a0b89dcf-82ac-401d-b11e-be75dc751dc2",
+                    "Name" : "ReplaceMetadata",
+                    "Parameters" : { },
+                    "Properties" : {
+                      "CustomErrorMessage" : "",
+                      "CustomSuccessMessage" : "",
+                      "ShowErrorMessage" : true,
+                      "ShowSuccessMessage" : true
+                    },
+                    "RefreshInterval" : 0,
+                    "Target" : "ReplaceMetadata"
+                  }, {
+                    "APIMethod" : "post",
+                    "Characteristic" : "Services",
+                    "Id" : "f6a5b077-4ed9-44d0-a32b-2524a66d2169",
+                    "Name" : "GetProperties",
+                    "Parameters" : { },
+                    "RefreshInterval" : 0,
+                    "Target" : "GetProperties"
+                  } ]
+                },
+                "UserExtensions" : {
+                  "DataName" : "UserExtensions",
+                  "EntityName" : "",
+                  "EntityType" : "UserExtensions",
+                  "Id" : "UserExtensions",
+                  "Services" : [ {
+                    "APIMethod" : "post",
+                    "Characteristic" : "Services",
+                    "Id" : "UserExtensionInterface",
+                    "Name" : "GetCurrentUserExtensionProperties",
+                    "Parameters" : { },
+                    "RefreshInterval" : 0,
+                    "Target" : "GetCurrentUserExtensionProperties"
+                  } ]
+                }
+              },
+              "DataBindings" : [ {
+                "Id" : "18ccc8c9-0e35-4a42-96ef-a9b817c45d9e",
+                "PropertyMaps" : [ {
+                  "SourceProperty" : "FileName",
+                  "SourcePropertyBaseType" : "STRING",
+                  "SourcePropertyType" : "Property",
+                  "TargetProperty" : "MetadataFilename",
+                  "TargetPropertyBaseType" : "STRING",
+                  "TargetPropertyType" : "Parameter"
+                } ],
+                "SourceArea" : "UI",
+                "SourceDetails" : "",
+                "SourceId" : "fileupload-3",
+                "SourceSection" : "",
+                "TargetArea" : "Data",
+                "TargetId" : "ReplaceMetadata",
+                "TargetSection" : "Things_PDS_Migration_Utilities"
+              }, {
+                "Id" : "28ca1f3f-92cc-4b9b-96f9-58a87965ee8b",
+                "PropertyMaps" : [ {
+                  "SourceProperty" : "FileName",
+                  "SourcePropertyBaseType" : "STRING",
+                  "SourcePropertyType" : "Property",
+                  "TargetProperty" : "FileAttributesFilename",
+                  "TargetPropertyBaseType" : "STRING",
+                  "TargetPropertyType" : "Parameter"
+                } ],
+                "SourceArea" : "UI",
+                "SourceDetails" : "",
+                "SourceId" : "fileupload-4",
+                "SourceSection" : "",
+                "TargetArea" : "Data",
+                "TargetId" : "ReplaceMetadata",
+                "TargetSection" : "Things_PDS_Migration_Utilities"
+              }, {
+                "Id" : "dc4f5270-6842-40ed-bfcf-8f357587e031",
+                "PropertyMaps" : [ {
+                  "SourceProperty" : "result",
+                  "SourcePropertyBaseType" : "HYPERLINK",
+                  "SourcePropertyType" : "Field",
+                  "TargetProperty" : "LinkURL",
+                  "TargetPropertyBaseType" : "STRING",
+                  "TargetPropertyType" : "property"
+                } ],
+                "SourceArea" : "Data",
+                "SourceDetails" : "AllData",
+                "SourceId" : "ReplaceMetadata",
+                "SourceSection" : "Things_PDS_Migration_Utilities",
+                "TargetArea" : "UI",
+                "TargetId" : "ptcslink-11",
+                "TargetSection" : ""
+              }, {
+                "Id" : "2f69ee51-14b6-4025-9aa4-5147b02da53d",
+                "PropertyMaps" : [ {
+                  "SourceProperty" : "FileName",
+                  "SourcePropertyBaseType" : "STRING",
+                  "SourcePropertyType" : "Property",
+                  "TargetProperty" : "MetadataFilename",
+                  "TargetPropertyBaseType" : "STRING",
+                  "TargetPropertyType" : "property"
+                } ],
+                "SourceArea" : "UI",
+                "SourceDetails" : "",
+                "SourceId" : "fileupload-3",
+                "SourceSection" : "",
+                "TargetArea" : "UI",
+                "TargetId" : "validator-14",
+                "TargetSection" : ""
+              }, {
+                "Id" : "540138d5-cdf7-4bbe-8b6f-98862e265f3a",
+                "PropertyMaps" : [ {
+                  "SourceProperty" : "FileName",
+                  "SourcePropertyBaseType" : "STRING",
+                  "SourcePropertyType" : "Property",
+                  "TargetProperty" : "FileAttributesFilename",
+                  "TargetPropertyBaseType" : "STRING",
+                  "TargetPropertyType" : "property"
+                } ],
+                "SourceArea" : "UI",
+                "SourceDetails" : "",
+                "SourceId" : "fileupload-4",
+                "SourceSection" : "",
+                "TargetArea" : "UI",
+                "TargetId" : "validator-14",
+                "TargetSection" : ""
+              }, {
+                "Id" : "d7c916cd-9bc7-41cd-99fc-89052c0b7fc5",
+                "PropertyMaps" : [ {
+                  "SourceProperty" : "result",
+                  "SourcePropertyBaseType" : "HYPERLINK",
+                  "SourcePropertyType" : "Field",
+                  "TargetProperty" : "URL",
+                  "TargetPropertyBaseType" : "STRING",
+                  "TargetPropertyType" : "property"
+                } ],
+                "SourceArea" : "Data",
+                "SourceDetails" : "AllData",
+                "SourceId" : "ReplaceMetadata",
+                "SourceSection" : "Things_PDS_Migration_Utilities",
+                "TargetArea" : "UI",
+                "TargetId" : "expression-19",
+                "TargetSection" : ""
+              }, {
+                "Id" : "668e782c-441e-4907-b5e0-9b04bb681aa3",
+                "PropertyMaps" : [ {
+                  "SourceProperty" : "Output",
+                  "SourcePropertyBaseType" : "STRING",
+                  "SourcePropertyType" : "Property",
+                  "TargetProperty" : "Text",
+                  "TargetPropertyBaseType" : "STRING",
+                  "TargetPropertyType" : "property"
+                } ],
+                "SourceArea" : "UI",
+                "SourceId" : "expression-19",
+                "SourceSection" : "",
+                "TargetArea" : "UI",
+                "TargetId" : "ptcslink-11",
+                "TargetSection" : ""
+              }, {
+                "Id" : "715c8343-ff0c-40b4-8bb5-ba8ecbf446d9",
+                "PropertyMaps" : [ {
+                  "SourceProperty" : "MatchedCount",
+                  "SourcePropertyBaseType" : "INTEGER",
+                  "SourcePropertyType" : "Field",
+                  "TargetProperty" : "Data",
+                  "TargetPropertyBaseType" : "ANYSCALAR",
+                  "TargetPropertyType" : "property"
+                } ],
+                "SourceArea" : "Data",
+                "SourceDetails" : "AllData",
+                "SourceId" : "GetProperties",
+                "SourceSection" : "Things_PDS_Migration_Utilities",
+                "TargetArea" : "UI",
+                "TargetId" : "ptcsvaluedisplay-20",
+                "TargetSection" : ""
+              }, {
+                "Id" : "f67b46b2-d9dc-4ee6-91bc-d03054b30271",
+                "PropertyMaps" : [ {
+                  "SourceProperty" : "UnmatchedCount",
+                  "SourcePropertyBaseType" : "INTEGER",
+                  "SourcePropertyType" : "Field",
+                  "TargetProperty" : "Data",
+                  "TargetPropertyBaseType" : "ANYSCALAR",
+                  "TargetPropertyType" : "property"
+                } ],
+                "SourceArea" : "Data",
+                "SourceDetails" : "AllData",
+                "SourceId" : "GetProperties",
+                "SourceSection" : "Things_PDS_Migration_Utilities",
+                "TargetArea" : "UI",
+                "TargetId" : "ptcsvaluedisplay-21",
+                "TargetSection" : ""
+              }, {
+                "Id" : "690dd811-f646-4c5e-9210-ef008e2fde33",
+                "PropertyMaps" : [ {
+                  "SourceProperty" : "Output",
+                  "SourcePropertyBaseType" : "STRING",
+                  "SourcePropertyType" : "Property",
+                  "TargetProperty" : "URL",
+                  "TargetPropertyBaseType" : "STRING",
+                  "TargetPropertyType" : "property"
+                } ],
+                "SourceArea" : "UI",
+                "SourceId" : "expression-19",
+                "SourceSection" : "",
+                "TargetArea" : "UI",
+                "TargetId" : "validator-22",
+                "TargetSection" : ""
+              }, {
+                "Id" : "6f8cc930-ae2e-4e5b-a982-ac892dfa86fd",
+                "PropertyMaps" : [ {
+                  "SourceProperty" : "Output",
+                  "SourcePropertyBaseType" : "BOOLEAN",
+                  "SourcePropertyType" : "Property",
+                  "TargetProperty" : "Visible",
+                  "TargetPropertyBaseType" : "BOOLEAN",
+                  "TargetPropertyType" : "property"
+                } ],
+                "SourceArea" : "UI",
+                "SourceId" : "validator-22",
+                "SourceSection" : "",
+                "TargetArea" : "UI",
+                "TargetId" : "ptcsvaluedisplay-20",
+                "TargetSection" : ""
+              }, {
+                "Id" : "89fea275-2e33-4bcb-a9fa-68247d2f4673",
+                "PropertyMaps" : [ {
+                  "SourceProperty" : "Output",
+                  "SourcePropertyBaseType" : "BOOLEAN",
+                  "SourcePropertyType" : "Property",
+                  "TargetProperty" : "Visible",
+                  "TargetPropertyBaseType" : "BOOLEAN",
+                  "TargetPropertyType" : "property"
+                } ],
+                "SourceArea" : "UI",
+                "SourceId" : "validator-22",
+                "SourceSection" : "",
+                "TargetArea" : "UI",
+                "TargetId" : "ptcsvaluedisplay-21",
+                "TargetSection" : ""
+              }, {
+                "Id" : "7426031d-ef9c-4554-9034-4a3ab7d8da83",
+                "PropertyMaps" : [ {
+                  "SourceProperty" : "TotalCount",
+                  "SourcePropertyBaseType" : "INTEGER",
+                  "SourcePropertyType" : "Field",
+                  "TargetProperty" : "Data",
+                  "TargetPropertyBaseType" : "ANYSCALAR",
+                  "TargetPropertyType" : "property"
+                } ],
+                "SourceArea" : "Data",
+                "SourceDetails" : "AllData",
+                "SourceId" : "GetProperties",
+                "SourceSection" : "Things_PDS_Migration_Utilities",
+                "TargetArea" : "UI",
+                "TargetId" : "ptcsvaluedisplay-23",
+                "TargetSection" : ""
+              }, {
+                "Id" : "409cf114-449d-475f-8f66-5898a9251bbd",
+                "PropertyMaps" : [ {
+                  "SourceProperty" : "Output",
+                  "SourcePropertyBaseType" : "BOOLEAN",
+                  "SourcePropertyType" : "Property",
+                  "TargetProperty" : "Visible",
+                  "TargetPropertyBaseType" : "BOOLEAN",
+                  "TargetPropertyType" : "property"
+                } ],
+                "SourceArea" : "UI",
+                "SourceId" : "validator-22",
+                "SourceSection" : "",
+                "TargetArea" : "UI",
+                "TargetId" : "ptcsvaluedisplay-23",
+                "TargetSection" : ""
+              }, {
+                "Id" : "76e957c3-9c9c-4169-a1e1-729d1cd030e7",
+                "PropertyMaps" : [ {
+                  "SourceProperty" : "Output",
+                  "SourcePropertyBaseType" : "BOOLEAN",
+                  "SourcePropertyType" : "Property",
+                  "TargetProperty" : "Visible",
+                  "TargetPropertyBaseType" : "BOOLEAN",
+                  "TargetPropertyType" : "property"
+                } ],
+                "SourceArea" : "UI",
+                "SourceId" : "validator-22",
+                "SourceSection" : "",
+                "TargetArea" : "UI",
+                "TargetId" : "ptcsvaluedisplay-24",
+                "TargetSection" : ""
+              }, {
+                "Id" : "28a675c2-0b42-4493-bb45-7534f983dae5",
+                "PropertyMaps" : [ {
+                  "SourceProperty" : "OnlyLibraryName",
+                  "SourcePropertyBaseType" : "INTEGER",
+                  "SourcePropertyType" : "Field",
+                  "TargetProperty" : "Data",
+                  "TargetPropertyBaseType" : "ANYSCALAR",
+                  "TargetPropertyType" : "property"
+                } ],
+                "SourceArea" : "Data",
+                "SourceDetails" : "AllData",
+                "SourceId" : "GetProperties",
+                "SourceSection" : "Things_PDS_Migration_Utilities",
+                "TargetArea" : "UI",
+                "TargetId" : "ptcsvaluedisplay-24",
+                "TargetSection" : ""
+              } ],
+              "DesignTimePermissions" : { },
+              "Events" : [ {
+                "EventHandlerArea" : "UI",
+                "EventHandlerId" : "validator-14",
+                "EventHandlerService" : "Evaluate",
+                "EventTriggerArea" : "UI",
+                "EventTriggerEvent" : "UploadComplete",
+                "EventTriggerId" : "fileupload-3",
+                "EventTriggerSection" : "",
+                "Id" : "82d51e7a-66c1-43bd-beff-9743ebf2277b"
+              }, {
+                "EventHandlerArea" : "UI",
+                "EventHandlerId" : "validator-14",
+                "EventHandlerService" : "Evaluate",
+                "EventTriggerArea" : "UI",
+                "EventTriggerEvent" : "UploadComplete",
+                "EventTriggerId" : "fileupload-4",
+                "EventTriggerSection" : "",
+                "Id" : "548ff889-3bf2-4dc8-8587-f6f3a2dd1240"
+              }, {
+                "EventHandlerArea" : "Data",
+                "EventHandlerId" : "Things_PDS_Migration_Utilities",
+                "EventHandlerService" : "ReplaceMetadata",
+                "EventTriggerArea" : "UI",
+                "EventTriggerEvent" : "True",
+                "EventTriggerId" : "validator-14",
+                "EventTriggerSection" : "",
+                "Id" : "09d83b3b-4390-4d53-bf76-f4b0151b4723"
+              }, {
+                "EventHandlerArea" : "UI",
+                "EventHandlerId" : "statusmessage-15",
+                "EventHandlerService" : "ShowMessage",
+                "EventTriggerArea" : "UI",
+                "EventTriggerEvent" : "UploadComplete",
+                "EventTriggerId" : "fileupload-3",
+                "EventTriggerSection" : "",
+                "Id" : "68f22d5e-c407-4252-815c-e18280a1b746"
+              }, {
+                "EventHandlerArea" : "UI",
+                "EventHandlerId" : "statusmessage-15",
+                "EventHandlerService" : "ShowMessage",
+                "EventTriggerArea" : "UI",
+                "EventTriggerEvent" : "UploadComplete",
+                "EventTriggerId" : "fileupload-4",
+                "EventTriggerSection" : "",
+                "Id" : "51d0801d-db7d-4d26-8759-ef1598b809d8"
+              }, {
+                "EventHandlerArea" : "UI",
+                "EventHandlerId" : "statusmessage-16",
+                "EventHandlerService" : "ShowMessage",
+                "EventTriggerArea" : "UI",
+                "EventTriggerEvent" : "UploadFailed",
+                "EventTriggerId" : "fileupload-4",
+                "EventTriggerSection" : "",
+                "Id" : "b40afb36-7b04-4531-b931-12fba18c2d27"
+              }, {
+                "EventHandlerArea" : "UI",
+                "EventHandlerId" : "statusmessage-16",
+                "EventHandlerService" : "ShowMessage",
+                "EventTriggerArea" : "UI",
+                "EventTriggerEvent" : "UploadFailed",
+                "EventTriggerId" : "fileupload-3",
+                "EventTriggerSection" : "",
+                "Id" : "0f8e133c-1319-44c8-80bf-4b87aec7cb5f"
+              }, {
+                "EventHandlerArea" : "Data",
+                "EventHandlerId" : "Things_PDS_Migration_Utilities",
+                "EventHandlerService" : "ReplaceMetadata",
+                "EventTriggerArea" : "UI",
+                "EventTriggerEvent" : "Clicked",
+                "EventTriggerId" : "ptcsbutton-18",
+                "EventTriggerSection" : "",
+                "Id" : "f5c4350a-2806-4de5-8bb1-8ebd6c02b5a4"
+              }, {
+                "EventHandlerArea" : "UI",
+                "EventHandlerId" : "expression-19",
+                "EventHandlerService" : "Evaluate",
+                "EventTriggerArea" : "Mashup",
+                "EventTriggerEvent" : "Loaded",
+                "EventTriggerId" : "mashup-root",
+                "EventTriggerSection" : "",
+                "Id" : "86df9fa4-e046-41e0-b939-1cce5267f051"
+              }, {
+                "EventHandlerArea" : "UI",
+                "EventHandlerId" : "expression-19",
+                "EventHandlerService" : "Evaluate",
+                "EventTriggerArea" : "Data",
+                "EventTriggerEvent" : "ServiceInvokeCompleted",
+                "EventTriggerId" : "ReplaceMetadata",
+                "EventTriggerSection" : "Things_PDS_Migration_Utilities",
+                "Id" : "11d7d956-e9d9-4aac-be71-d92790cf5218"
+              }, {
+                "EventHandlerArea" : "Data",
+                "EventHandlerId" : "Things_PDS_Migration_Utilities",
+                "EventHandlerService" : "GetProperties",
+                "EventTriggerArea" : "Data",
+                "EventTriggerEvent" : "ServiceInvokeCompleted",
+                "EventTriggerId" : "ReplaceMetadata",
+                "EventTriggerSection" : "Things_PDS_Migration_Utilities",
+                "Id" : "f9d8ec6e-6619-4a32-92b3-987470ac4260"
+              } ],
+              "RunTimePermissions" : { },
+              "UI" : {
+                "Properties" : {
+                  "AddToDashboardButton" : "SimplePlus",
+                  "AddToDashboardButtonStyle" : "DefaultAddToDashboardButtonStyle",
+                  "Area" : "Mashup",
+                  "BGImage" : "",
+                  "BGImageRepeat" : "no-repeat",
+                  "BGImageSize" : "auto",
+                  "Columns" : 0,
+                  "ConfigureGadgetButton" : "SimpleGear",
+                  "ConfigureGadgetButtonStyle" : "DefaultConfigureGadgetButtonStyle",
+                  "DisplayName" : "Mashup",
+                  "EnableParameterEditing" : false,
+                  "Height" : 618,
+                  "Id" : "mashup-root",
+                  "IgnoreWarningsInViewMashup" : false,
+                  "IsPrintLayout" : false,
+                  "Left" : 0,
+                  "MashupToEditGadget" : "DefaultMashupToEditGadget",
+                  "MinHeight" : 0,
+                  "MinWidth" : 0,
+                  "ResponsiveLayout" : true,
+                  "Rows" : 0,
+                  "ShowDataLoading" : true,
+                  "Style" : "DefaultMashupStyle",
+                  "StyleProperties" : {
+                    "data" : { },
+                    "meta" : {
+                      "type" : "WidgetStyler",
+                      "version" : "1.0"
+                    }
+                  },
+                  "StyleTheme" : "PTC Convergence Theme",
+                  "Title" : "",
+                  "TitleBar" : false,
+                  "TitleBarStyle" : "DefaultTitleBarStyle",
+                  "TitleBarText" : "Gadget Title Here",
+                  "Top" : 0,
+                  "Type" : "mashup",
+                  "UseMasterTheme" : false,
+                  "UseTheme" : false,
+                  "UseThemeForHybrids" : false,
+                  "Visible" : true,
+                  "Width" : 1024,
+                  "Z-index" : 10,
+                  "__TypeDisplayName" : "Mashup",
+                  "id_index" : 24,
+                  "supportsAutoResize" : true
+                },
+                "Widgets" : [ {
+                  "Properties" : {
+                    "Area" : "UI",
+                    "DisplayName" : "container-2",
+                    "EnableExpandCollapse" : false,
+                    "ExpandCollapseTabLocation" : "inside",
+                    "Expanded" : true,
+                    "Id" : "flexcontainer-2",
+                    "LastContainer" : true,
+                    "Overlay" : false,
+                    "ResponsiveLayout" : true,
+                    "ShowDataLoading" : true,
+                    "ShowExpandCollapseTab" : false,
+                    "SourceURL" : "",
+                    "Style" : "DefaultContainerStyle",
+                    "StyleProperties" : { },
+                    "Type" : "flexcontainer",
+                    "UseTheme" : true,
+                    "Visible" : true,
+                    "Z-index" : 10,
+                    "__TypeDisplayName" : "Responsive Container",
+                    "align-content" : "flex-start",
+                    "align-items" : "flex-start",
+                    "flex-basis" : "auto",
+                    "flex-direction" : "row",
+                    "flex-grow" : 1,
+                    "flex-max-height" : "",
+                    "flex-max-width" : "",
+                    "flex-min-height" : "",
+                    "flex-min-width" : "",
+                    "flex-shrink" : 1,
+                    "flex-size" : "default",
+                    "flex-wrap" : "nowrap",
+                    "iconClass" : "widgets-flexcontainer",
+                    "isLocked" : false,
+                    "justify-content" : "flex-start",
+                    "positioning" : "responsive",
+                    "userCannotRemove" : true
+                  },
+                  "Widgets" : [ {
+                    "Properties" : {
+                      "Area" : "UI",
+                      "DisplayName" : "container-7",
+                      "EnableExpandCollapse" : false,
+                      "ExpandCollapseTabLocation" : "inside",
+                      "Expanded" : true,
+                      "Id" : "flexcontainer-7",
+                      "LastContainer" : false,
+                      "Overlay" : false,
+                      "ResponsiveLayout" : true,
+                      "ShowDataLoading" : true,
+                      "ShowExpandCollapseTab" : false,
+                      "SourceURL" : "",
+                      "Style" : "DefaultContainerStyle",
+                      "StyleProperties" : { },
+                      "Type" : "flexcontainer",
+                      "UseTheme" : true,
+                      "Visible" : true,
+                      "Z-index" : 10,
+                      "__TypeDisplayName" : "Responsive Container",
+                      "align-content" : "flex-start",
+                      "align-items" : "flex-start",
+                      "flex-basis" : "auto",
+                      "flex-direction" : "column",
+                      "flex-grow" : 1,
+                      "flex-max-height" : "",
+                      "flex-max-width" : "",
+                      "flex-min-height" : "",
+                      "flex-min-width" : "",
+                      "flex-shrink" : 1,
+                      "flex-size" : "default",
+                      "flex-wrap" : "nowrap",
+                      "iconClass" : "widgets-flexcontainer",
+                      "isLocked" : false,
+                      "justify-content" : "flex-start",
+                      "positioning" : "responsive",
+                      "userCannotRemove" : false
+                    },
+                    "Widgets" : [ {
+                      "Properties" : {
+                        "Area" : "UI",
+                        "DisclosureControl" : "show-more",
+                        "DisplayName" : "ptcs-label-9",
+                        "HorizontalAlignment" : "left",
+                        "Id" : "ptcslabel-9",
+                        "LabelText" : "Metadata",
+                        "LabelType" : "label",
+                        "LastContainer" : false,
+                        "Left" : 44,
+                        "Margin" : "5",
+                        "MultiLine" : true,
+                        "ResponsiveLayout" : false,
+                        "ShowDataLoading" : true,
+                        "Top" : 11.333328247070312,
+                        "Type" : "ptcslabel",
+                        "UseTheme" : true,
+                        "VerticalAlignment" : "flex-start",
+                        "Visible" : true,
+                        "Z-index" : 10,
+                        "__TypeDisplayName" : "Label",
+                        "overflowShowLessTxt" : "[[showLess]]",
+                        "overflowShowMoreTxt" : "[[showMore]]"
+                      },
+                      "Widgets" : [ ]
+                    }, {
+                      "Properties" : {
+                        "AllowedFileTypes" : ".csv",
+                        "Area" : "UI",
+                        "DisplayName" : "fileupload-3",
+                        "DisplayPathTextBox" : false,
+                        "DisplayRepositorySelector" : false,
+                        "FileName" : "",
+                        "FocusStyle" : "DefaultButtonFocusStyle",
+                        "FullPath" : "",
+                        "Height" : 40,
+                        "Id" : "fileupload-3",
+                        "LastContainer" : false,
+                        "Left" : 349,
+                        "Margin" : "5",
+                        "MultiFilesSelect" : false,
+                        "Path" : "/Metadata",
+                        "RepositoryName" : "PDS_Migration_Utilities",
+                        "RepositoryStyle" : "DefaultRepositoryStyle",
+                        "ResponsiveLayout" : false,
+                        "ShowDataLoading" : true,
+                        "Style" : "DefaultFileUploadStyle",
+                        "TabSequence" : 0,
+                        "Top" : 231.3333282470703,
+                        "Type" : "fileupload",
+                        "Visible" : true,
+                        "Width" : 302,
+                        "Z-index" : 10,
+                        "__TypeDisplayName" : "File Upload"
+                      },
+                      "Widgets" : [ ]
+                    }, {
+                      "Properties" : {
+                        "Area" : "UI",
+                        "DisclosureControl" : "show-more",
+                        "DisplayName" : "ptcs-label-10",
+                        "HorizontalAlignment" : "left",
+                        "Id" : "ptcslabel-10",
+                        "LabelText" : "FileAttributes (without bom line)",
+                        "LabelType" : "label",
+                        "LastContainer" : false,
+                        "Left" : 44,
+                        "Margin" : "5",
+                        "MultiLine" : true,
+                        "ResponsiveLayout" : false,
+                        "ShowDataLoading" : true,
+                        "Top" : 11.333328247070312,
+                        "Type" : "ptcslabel",
+                        "UseTheme" : true,
+                        "VerticalAlignment" : "flex-start",
+                        "Visible" : true,
+                        "Z-index" : 10,
+                        "__TypeDisplayName" : "Label",
+                        "overflowShowLessTxt" : "[[showLess]]",
+                        "overflowShowMoreTxt" : "[[showMore]]"
+                      },
+                      "Widgets" : [ ]
+                    }, {
+                      "Properties" : {
+                        "AllowedFileTypes" : ".csv",
+                        "Area" : "UI",
+                        "DisplayName" : "fileupload-4",
+                        "DisplayPathTextBox" : false,
+                        "DisplayRepositorySelector" : false,
+                        "FileName" : "",
+                        "FocusStyle" : "DefaultButtonFocusStyle",
+                        "FullPath" : "",
+                        "Height" : 40,
+                        "Id" : "fileupload-4",
+                        "LastContainer" : false,
+                        "Left" : 349,
+                        "Margin" : "5",
+                        "MultiFilesSelect" : false,
+                        "Path" : "/FileAttributes",
+                        "RepositoryName" : "PDS_Migration_Utilities",
+                        "RepositoryStyle" : "DefaultRepositoryStyle",
+                        "ResponsiveLayout" : false,
+                        "ShowDataLoading" : true,
+                        "Style" : "DefaultFileUploadStyle",
+                        "TabSequence" : 0,
+                        "Top" : 231.3333282470703,
+                        "Type" : "fileupload",
+                        "Visible" : true,
+                        "Width" : 302,
+                        "Z-index" : 10,
+                        "__TypeDisplayName" : "File Upload"
+                      },
+                      "Widgets" : [ ]
+                    }, {
+                      "Properties" : {
+                        "Area" : "UI",
+                        "ButtonType" : "primary",
+                        "ContextID" : "",
+                        "Disabled" : false,
+                        "DisplayName" : "ptcs-button-18",
+                        "Id" : "ptcsbutton-18",
+                        "Label" : "Fix metadata",
+                        "LabelAlignment" : "center",
+                        "LastContainer" : false,
+                        "Left" : 189,
+                        "Margin" : "5",
+                        "ResponsiveLayout" : false,
+                        "ShowDataLoading" : true,
+                        "TabSequence" : 0,
+                        "Top" : 396.3333282470703,
+                        "Type" : "ptcsbutton",
+                        "UseTheme" : true,
+                        "Visible" : false,
+                        "Z-index" : 10,
+                        "__TypeDisplayName" : "Button"
+                      },
+                      "Widgets" : [ ]
+                    }, {
+                      "Properties" : {
+                        "Alignment" : "center",
+                        "Area" : "UI",
+                        "Disabled" : false,
+                        "DisplayName" : "ptcs-link-11",
+                        "Height" : 54,
+                        "Id" : "ptcslink-11",
+                        "LastContainer" : false,
+                        "Left" : 294,
+                        "LinkType" : "primary",
+                        "Margin" : "5",
+                        "ResponsiveLayout" : false,
+                        "ShowDataLoading" : true,
+                        "SingleLine" : true,
+                        "TabSequence" : 0,
+                        "TargetWindow" : "_blank",
+                        "Text" : "",
+                        "Top" : 451.3333282470703,
+                        "Type" : "ptcslink",
+                        "UseTheme" : true,
+                        "Visible" : true,
+                        "Width" : 344,
+                        "Z-index" : 10,
+                        "__TypeDisplayName" : "Link"
+                      },
+                      "Widgets" : [ ]
+                    }, {
+                      "Properties" : {
+                        "Area" : "UI",
+                        "DataBaseType" : "INTEGER",
+                        "Disabled" : false,
+                        "DisclosureControl" : "disclosure",
+                        "DisplayName" : "ptcs-valuedisplay-20",
+                        "Height" : 70,
+                        "HorizontalAlignment" : "left",
+                        "Id" : "ptcsvaluedisplay-20",
+                        "ItemMeta" : {
+                          "type" : "text"
+                        },
+                        "Label" : "Matched",
+                        "LabelAlignment" : "left",
+                        "LabelType" : "label",
+                        "LastContainer" : false,
+                        "Left" : 79,
+                        "Margin" : "5",
+                        "ModalHeight" : 380,
+                        "ModalWidth" : 600,
+                        "MultiLine" : true,
+                        "ResponsiveLayout" : false,
+                        "ShowDataLoading" : true,
+                        "TabSequence" : 0,
+                        "TextIfNoValue" : "",
+                        "Top" : 351.3333282470703,
+                        "Type" : "ptcsvaluedisplay",
+                        "UseTheme" : true,
+                        "ValueFormat_StateParameters" : [ ],
+                        "VerticalAlignment" : "flex-start",
+                        "Visible" : true,
+                        "Width" : 204,
+                        "Z-index" : 10,
+                        "__TypeDisplayName" : "Value Display",
+                        "overflowShowLessTxt" : "[[showLess]]",
+                        "overflowShowMoreTxt" : "[[showMore]]"
+                      },
+                      "Widgets" : [ ]
+                    }, {
+                      "Properties" : {
+                        "Area" : "UI",
+                        "DataBaseType" : "INTEGER",
+                        "Disabled" : false,
+                        "DisclosureControl" : "disclosure",
+                        "DisplayName" : "ptcs-valuedisplay-21",
+                        "Height" : 70,
+                        "HorizontalAlignment" : "left",
+                        "Id" : "ptcsvaluedisplay-21",
+                        "ItemMeta" : {
+                          "type" : "text"
+                        },
+                        "Label" : "Unmatched",
+                        "LabelAlignment" : "left",
+                        "LabelType" : "label",
+                        "LastContainer" : false,
+                        "Left" : 229,
+                        "Margin" : "5",
+                        "ModalHeight" : 380,
+                        "ModalWidth" : 600,
+                        "MultiLine" : true,
+                        "ResponsiveLayout" : false,
+                        "ShowDataLoading" : true,
+                        "TabSequence" : 0,
+                        "TextIfNoValue" : "",
+                        "Top" : 336.3333282470703,
+                        "Type" : "ptcsvaluedisplay",
+                        "UseTheme" : true,
+                        "ValueFormat_StateParameters" : [ ],
+                        "VerticalAlignment" : "flex-start",
+                        "Visible" : true,
+                        "Width" : 204,
+                        "Z-index" : 10,
+                        "__TypeDisplayName" : "Value Display",
+                        "overflowShowLessTxt" : "[[showLess]]",
+                        "overflowShowMoreTxt" : "[[showMore]]"
+                      },
+                      "Widgets" : [ ]
+                    }, {
+                      "Properties" : {
+                        "Area" : "UI",
+                        "DataBaseType" : "INTEGER",
+                        "Disabled" : false,
+                        "DisclosureControl" : "disclosure",
+                        "DisplayName" : "ptcs-valuedisplay-24",
+                        "Height" : 70,
+                        "HorizontalAlignment" : "left",
+                        "Id" : "ptcsvaluedisplay-24",
+                        "ItemMeta" : {
+                          "type" : "text"
+                        },
+                        "Label" : "UpdatedWBMOBJECTNUMBER",
+                        "LabelAlignment" : "left",
+                        "LabelType" : "label",
+                        "LastContainer" : false,
+                        "Left" : 229,
+                        "Margin" : "5",
+                        "ModalHeight" : 380,
+                        "ModalWidth" : 600,
+                        "MultiLine" : true,
+                        "ResponsiveLayout" : false,
+                        "ShowDataLoading" : true,
+                        "TabSequence" : 0,
+                        "TextIfNoValue" : "",
+                        "Top" : 336.3333282470703,
+                        "Type" : "ptcsvaluedisplay",
+                        "UseTheme" : true,
+                        "ValueFormat_StateParameters" : [ ],
+                        "VerticalAlignment" : "flex-start",
+                        "Visible" : false,
+                        "Width" : 279,
+                        "Z-index" : 10,
+                        "__TypeDisplayName" : "Value Display",
+                        "overflowShowLessTxt" : "[[showLess]]",
+                        "overflowShowMoreTxt" : "[[showMore]]"
+                      },
+                      "Widgets" : [ ]
+                    }, {
+                      "Properties" : {
+                        "Area" : "UI",
+                        "DataBaseType" : "INTEGER",
+                        "Disabled" : false,
+                        "DisclosureControl" : "disclosure",
+                        "DisplayName" : "ptcs-valuedisplay-23",
+                        "Height" : 70,
+                        "HorizontalAlignment" : "left",
+                        "Id" : "ptcsvaluedisplay-23",
+                        "ItemMeta" : {
+                          "type" : "text"
+                        },
+                        "Label" : "Total",
+                        "LabelAlignment" : "left",
+                        "LabelType" : "label",
+                        "LastContainer" : false,
+                        "Left" : 229,
+                        "Margin" : "5",
+                        "ModalHeight" : 380,
+                        "ModalWidth" : 600,
+                        "MultiLine" : true,
+                        "ResponsiveLayout" : false,
+                        "ShowDataLoading" : true,
+                        "TabSequence" : 0,
+                        "TextIfNoValue" : "",
+                        "Top" : 336.3333282470703,
+                        "Type" : "ptcsvaluedisplay",
+                        "UseTheme" : true,
+                        "ValueFormat_StateParameters" : [ ],
+                        "VerticalAlignment" : "flex-start",
+                        "Visible" : true,
+                        "Width" : 204,
+                        "Z-index" : 10,
+                        "__TypeDisplayName" : "Value Display",
+                        "overflowShowLessTxt" : "[[showLess]]",
+                        "overflowShowMoreTxt" : "[[showMore]]"
+                      },
+                      "Widgets" : [ ]
+                    } ]
+                  }, {
+                    "Properties" : {
+                      "Area" : "UI",
+                      "DisplayName" : "container-8",
+                      "EnableExpandCollapse" : false,
+                      "ExpandCollapseTabLocation" : "inside",
+                      "Expanded" : true,
+                      "Id" : "flexcontainer-8",
+                      "LastContainer" : false,
+                      "Overlay" : false,
+                      "ResponsiveLayout" : false,
+                      "ShowDataLoading" : true,
+                      "ShowExpandCollapseTab" : false,
+                      "SourceURL" : "",
+                      "Style" : "DefaultContainerStyle",
+                      "StyleProperties" : { },
+                      "Type" : "flexcontainer",
+                      "UseTheme" : true,
+                      "Visible" : true,
+                      "Z-index" : 10,
+                      "__TypeDisplayName" : "Responsive Container",
+                      "align-content" : "flex-start",
+                      "align-items" : "flex-start",
+                      "flex-basis" : "auto",
+                      "flex-direction" : "row",
+                      "flex-grow" : 1,
+                      "flex-max-height" : "",
+                      "flex-max-width" : "",
+                      "flex-min-height" : "",
+                      "flex-min-width" : "",
+                      "flex-shrink" : 1,
+                      "flex-size" : "default",
+                      "flex-wrap" : "nowrap",
+                      "iconClass" : "widgets-flexcontainer",
+                      "isLocked" : false,
+                      "justify-content" : "flex-start",
+                      "positioning" : "responsive",
+                      "userCannotRemove" : false
+                    },
+                    "Widgets" : [ ]
+                  } ]
+                }, {
+                  "Properties" : {
+                    "Area" : "UI",
+                    "AutoEvaluate" : false,
+                    "DisplayName" : "UploadCompleted",
+                    "Expression" : "let result = false;\nif(MetadataFilename != undefined && MetadataFilename.length > 0 && FileAttributesFilename != undefined && FileAttributesFilename.length > 0){\n\tresult = true;\n}",
+                    "Height" : 28,
+                    "Id" : "validator-14",
+                    "LastContainer" : false,
+                    "Left" : null,
+                    "Output" : true,
+                    "ResponsiveLayout" : false,
+                    "ShowDataLoading" : true,
+                    "Top" : null,
+                    "Type" : "validator",
+                    "Visible" : true,
+                    "Width" : 200,
+                    "Z-index" : 10,
+                    "__TypeDisplayName" : "Validator",
+                    "_currentParameterDefs" : [ {
+                      "BaseType" : "STRING",
+                      "Description" : "",
+                      "ParameterName" : "MetadataFilename",
+                      "bindingDirection" : "Target",
+                      "bindingType" : "Property",
+                      "isBindingSource" : false,
+                      "isBindingTarget" : true,
+                      "shown" : true
+                    }, {
+                      "BaseType" : "STRING",
+                      "Description" : "",
+                      "ParameterName" : "FileAttributesFilename",
+                      "bindingDirection" : "Target",
+                      "bindingType" : "Property",
+                      "isBindingSource" : false,
+                      "isBindingTarget" : true,
+                      "shown" : true
+                    } ]
+                  },
+                  "Widgets" : [ ]
+                }, {
+                  "Properties" : {
+                    "Area" : "UI",
+                    "DisplayName" : "UploadCompletedMessage",
+                    "Height" : 28,
+                    "Id" : "statusmessage-15",
+                    "LastContainer" : false,
+                    "Left" : null,
+                    "Message" : "Upload completed",
+                    "MessageType" : "info",
+                    "ResponsiveLayout" : false,
+                    "ShowDataLoading" : true,
+                    "Top" : null,
+                    "Type" : "statusmessage",
+                    "Visible" : true,
+                    "Width" : 200,
+                    "Z-index" : 10,
+                    "__TypeDisplayName" : "Status Message"
+                  },
+                  "Widgets" : [ ]
+                }, {
+                  "Properties" : {
+                    "Area" : "UI",
+                    "DisplayName" : "UploadFailedMessage",
+                    "Height" : 28,
+                    "Id" : "statusmessage-16",
+                    "LastContainer" : false,
+                    "Left" : null,
+                    "Message" : "Upload failed",
+                    "MessageType" : "error",
+                    "ResponsiveLayout" : false,
+                    "ShowDataLoading" : true,
+                    "Top" : null,
+                    "Type" : "statusmessage",
+                    "Visible" : true,
+                    "Width" : 200,
+                    "Z-index" : 10,
+                    "__TypeDisplayName" : "Status Message"
+                  },
+                  "Widgets" : [ ]
+                }, {
+                  "Properties" : {
+                    "Area" : "UI",
+                    "AutoEvaluate" : false,
+                    "DataChangeType" : "ALWAYS",
+                    "DisplayName" : "DownloadText",
+                    "Expression" : "let result = \"\";\nif(URL != undefined && URL.length > 0){\n\tresult = \"Download result\";\n}\nOutput = result;",
+                    "FireOnFirstValue" : false,
+                    "Height" : 28,
+                    "Id" : "expression-19",
+                    "LastContainer" : false,
+                    "Left" : null,
+                    "OutputBaseType" : "STRING",
+                    "ResponsiveLayout" : false,
+                    "ShowDataLoading" : true,
+                    "Top" : null,
+                    "Type" : "expression",
+                    "Visible" : true,
+                    "Width" : 200,
+                    "Z-index" : 10,
+                    "__TypeDisplayName" : "Expression",
+                    "_currentParameterDefs" : [ {
+                      "BaseType" : "STRING",
+                      "Description" : "",
+                      "ParameterName" : "URL",
+                      "bindingDirection" : "Target",
+                      "bindingType" : "Property",
+                      "isBindingSource" : false,
+                      "isBindingTarget" : true,
+                      "shown" : true
+                    } ]
+                  },
+                  "Widgets" : [ ]
+                }, {
+                  "Properties" : {
+                    "Area" : "UI",
+                    "AutoEvaluate" : true,
+                    "DisplayName" : "ServiceCompleted",
+                    "Expression" : "let result = false;\nif(URL != undefined && URL.length > 0){\n\tresult = true;\n}\nOutput = result;",
+                    "Height" : 28,
+                    "Id" : "validator-22",
+                    "LastContainer" : false,
+                    "Left" : null,
+                    "Output" : true,
+                    "ResponsiveLayout" : false,
+                    "ShowDataLoading" : true,
+                    "Top" : null,
+                    "Type" : "validator",
+                    "Visible" : true,
+                    "Width" : 200,
+                    "Z-index" : 10,
+                    "__TypeDisplayName" : "Validator",
+                    "_currentParameterDefs" : [ {
+                      "BaseType" : "STRING",
+                      "Description" : "",
+                      "ParameterName" : "URL",
+                      "bindingDirection" : "Target",
+                      "bindingType" : "Property",
+                      "isBindingSource" : false,
+                      "isBindingTarget" : true,
+                      "shown" : true
+                    } ]
+                  },
+                  "Widgets" : [ ]
+                } ]
+              },
+              "mashupType" : "mashup"
+            }
+            ]]>
+            </mashupContent>
+            <preview></preview>
+        </Mashup>
+    </Mashups>
+</Entities>

@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Entities
+ majorVersion="9"
+ minorVersion="1"
+ universal="">
+    <Things>
+        <Thing
+         description=""
+         documentationContent=""
+         effectiveThingPackage="FileRepositoryThing"
+         enabled="true"
+         homeMashup=""
+         identifier=""
+         inheritedValueStream=""
+         name="PDS_Migration_Utilities"
+         projectName="PDS_Utilities_Migration"
+         published="false"
+         tags=""
+         thingTemplate="FileRepository"
+         valueStream="">
+            <avatar></avatar>
+            <DesignTimePermissions>
+                <Create></Create>
+                <Read></Read>
+                <Update></Update>
+                <Delete></Delete>
+                <Metadata></Metadata>
+            </DesignTimePermissions>
+            <RunTimePermissions></RunTimePermissions>
+            <VisibilityPermissions>
+                <Visibility></Visibility>
+            </VisibilityPermissions>
+            <ConfigurationTableDefinitions></ConfigurationTableDefinitions>
+            <ConfigurationTables></ConfigurationTables>
+            <ThingShape>
+                <PropertyDefinitions>
+                    <PropertyDefinition
+                     aspect.cacheTime="0.0"
+                     aspect.dataChangeType="VALUE"
+                     aspect.isLogged="true"
+                     aspect.isPersistent="false"
+                     baseType="INTEGER"
+                     category=""
+                     description=""
+                     isLocalOnly="false"
+                     name="MatchedCount"
+                     ordinal="2"></PropertyDefinition>
+                    <PropertyDefinition
+                     aspect.cacheTime="0.0"
+                     aspect.dataChangeType="VALUE"
+                     aspect.isLogged="true"
+                     baseType="INTEGER"
+                     category=""
+                     description=""
+                     isLocalOnly="false"
+                     name="OnlyLibraryName"
+                     ordinal="5"></PropertyDefinition>
+                    <PropertyDefinition
+                     aspect.cacheTime="0.0"
+                     aspect.dataChangeType="VALUE"
+                     aspect.isLogged="true"
+                     baseType="INTEGER"
+                     category=""
+                     description=""
+                     isLocalOnly="false"
+                     name="TotalCount"
+                     ordinal="4"></PropertyDefinition>
+                    <PropertyDefinition
+                     aspect.cacheTime="0.0"
+                     aspect.dataChangeType="VALUE"
+                     aspect.isLogged="true"
+                     baseType="INTEGER"
+                     category=""
+                     description=""
+                     isLocalOnly="false"
+                     name="UnmatchedCount"
+                     ordinal="3"></PropertyDefinition>
+                </PropertyDefinitions>
+                <ServiceDefinitions>
+                    <ServiceDefinition
+                     aspect.isAsync="false"
+                     category=""
+                     description=""
+                     isAllowOverride="false"
+                     isLocalOnly="false"
+                     isOpen="false"
+                     isPrivate="false"
+                     name="ReadFileAttributes">
+                        <ResultType
+                         aspect.dataShape="PDS_Migration_DataShape_FileAttributes"
+                         baseType="INFOTABLE"
+                         description=""
+                         name="result"
+                         ordinal="0"></ResultType>
+                        <ParameterDefinitions>
+                            <FieldDefinition
+                             aspect.defaultValue="fileAttributes--2021-07-19_09.37.17.csv"
+                             aspect.isRequired="true"
+                             baseType="STRING"
+                             description=""
+                             name="Filename"
+                             ordinal="1"></FieldDefinition>
+                        </ParameterDefinitions>
+                    </ServiceDefinition>
+                    <ServiceDefinition
+                     aspect.isAsync="false"
+                     category=""
+                     description=""
+                     isAllowOverride="false"
+                     isLocalOnly="false"
+                     isOpen="false"
+                     isPrivate="false"
+                     name="ReadMetadata">
+                        <ResultType
+                         aspect.dataShape="PDS_Migration_DataShape_Metadata"
+                         baseType="INFOTABLE"
+                         description=""
+                         name="result"
+                         ordinal="0"></ResultType>
+                        <ParameterDefinitions>
+                            <FieldDefinition
+                             aspect.defaultValue="EPMDoc_metadata.csv"
+                             aspect.isRequired="true"
+                             baseType="STRING"
+                             description=""
+                             name="Filename"
+                             ordinal="1"></FieldDefinition>
+                        </ParameterDefinitions>
+                    </ServiceDefinition>
+                    <ServiceDefinition
+                     aspect.isAsync="false"
+                     category=""
+                     description=""
+                     isAllowOverride="false"
+                     isLocalOnly="false"
+                     isOpen="false"
+                     isPrivate="false"
+                     name="ReplaceMetadata">
+                        <ResultType
+                         baseType="HYPERLINK"
+                         description=""
+                         name="result"
+                         ordinal="0"></ResultType>
+                        <ParameterDefinitions>
+                            <FieldDefinition
+                             aspect.isRequired="true"
+                             baseType="STRING"
+                             description=""
+                             name="FileAttributesFilename"
+                             ordinal="2"></FieldDefinition>
+                            <FieldDefinition
+                             aspect.isRequired="true"
+                             baseType="STRING"
+                             description=""
+                             name="MetadataFilename"
+                             ordinal="1"></FieldDefinition>
+                        </ParameterDefinitions>
+                    </ServiceDefinition>
+                    <ServiceDefinition
+                     aspect.isAsync="false"
+                     category=""
+                     description=""
+                     isAllowOverride="false"
+                     isLocalOnly="false"
+                     isOpen="false"
+                     isPrivate="false"
+                     name="WriteReplacedFileAttributes">
+                        <ResultType
+                         baseType="HYPERLINK"
+                         description=""
+                         name="result"
+                         ordinal="0"></ResultType>
+                        <ParameterDefinitions>
+                            <FieldDefinition
+                             aspect.dataShape="PDS_Migration_DataShape_FileAttributes"
+                             aspect.isRequired="true"
+                             baseType="INFOTABLE"
+                             description=""
+                             name="Data"
+                             ordinal="1"></FieldDefinition>
+                            <FieldDefinition
+                             aspect.isRequired="true"
+                             baseType="STRING"
+                             description=""
+                             name="FileName"
+                             ordinal="2"></FieldDefinition>
+                        </ParameterDefinitions>
+                    </ServiceDefinition>
+                </ServiceDefinitions>
+                <EventDefinitions></EventDefinitions>
+                <ServiceMappings></ServiceMappings>
+                <ServiceImplementations>
+                    <ServiceImplementation
+                     description=""
+                     handlerName="Script"
+                     name="ReadFileAttributes">
+                        <ConfigurationTables>
+                            <ConfigurationTable
+                             dataShapeName=""
+                             description=""
+                             isMultiRow="false"
+                             name="Script"
+                             ordinal="0">
+                                <DataShape>
+                                    <FieldDefinitions>
+                                        <FieldDefinition
+                                         baseType="STRING"
+                                         description="code"
+                                         name="code"
+                                         ordinal="0"></FieldDefinition>
+                                        <FieldDefinition
+                                         baseType="JSON"
+                                         description=""
+                                         name="editorSettings"
+                                         ordinal="0"></FieldDefinition>
+                                    </FieldDefinitions>
+                                </DataShape>
+                                <Rows>
+                                    <Row>
+                                        <code>
+                                        <![CDATA[
+                                        let result = Resources["CSVParserFunctions"].ReadCSVFile({
+                                        	path: "FileAttributes/" + Filename /* STRING */,
+                                        	columnMappings: "cadId;sourceId;SourceLocation;SourceName;ModelName;LibraryName;Type;isTopGeneric;revision;iteration;lifecycle_state;lifecycle;TARGET_CONTAINER_TYPE;WBM_NAME;create_ts;TARGET_ORGANIZATION_NAME;TARGET_DESCRIPTION;TARGET_ITERATION_NOTE;modifier_id;TARGET_CONTAINER_NAME;TARGET_PATH;WBM_OBJECTNUMBER;modify_ts;creator_id;WEIGHT;MATERIAL;REPLACES;NOTE" /* STRING */,
+                                        	hasHeader: true /* BOOLEAN */,
+                                        	longitudeField: undefined /* NUMBER */,
+                                        	dateFormat: undefined /* STRING */,
+                                        	fileRepository: me.name /* THINGNAME */,
+                                        	latitudeField: undefined /* NUMBER */,
+                                        	fieldDelimiter: "," /* STRING */,
+                                        	stringDelimiter: undefined /* STRING */,
+                                        	dataShape: "" /* DATASHAPENAME */
+                                        });
+                                        ]]>
+                                        </code>
+                                        <editorSettings>
+                                            <json>
+                                            <![CDATA[
+                                            {"viewState":{"viewState":{"firstPositionDeltaTop":0,"scrollLeft":0,"firstPosition":{"column":1,"lineNumber":1}},"cursorState":[{"inSelectionMode":false,"selectionStart":{"column":14,"lineNumber":11},"position":{"column":14,"lineNumber":11}}],"contributionsState":{"editor.contrib.wordHighlighter":false,"editor.contrib.folding":{"provider":"indent","lineCount":12,"foldedImports":false}}}}
+                                            ]]>
+                                            </json>
+                                        </editorSettings>
+                                    </Row>
+                                </Rows>
+                            </ConfigurationTable>
+                        </ConfigurationTables>
+                    </ServiceImplementation>
+                    <ServiceImplementation
+                     description=""
+                     handlerName="Script"
+                     name="ReadMetadata">
+                        <ConfigurationTables>
+                            <ConfigurationTable
+                             dataShapeName=""
+                             description=""
+                             isMultiRow="false"
+                             name="Script"
+                             ordinal="0">
+                                <DataShape>
+                                    <FieldDefinitions>
+                                        <FieldDefinition
+                                         baseType="STRING"
+                                         description="code"
+                                         name="code"
+                                         ordinal="0"></FieldDefinition>
+                                    </FieldDefinitions>
+                                </DataShape>
+                                <Rows>
+                                    <Row>
+                                        <code>
+                                        <![CDATA[
+                                        let result = Resources["CSVParserFunctions"].ReadCSVFile({
+                                        	path: "Metadata/" + Filename /* STRING */,
+                                        	columnMappings: "WBMSRCFILE;LIFECYCLESTATE;REVISION;ITERATION;CREATE_TS;CREATOR_ID;MODIFY_TS;MODIFIER_ID;TARGET_CONTAINER_NAME;TARGET_CONTAINER_TYPE;TARGET_ITERATION_NOTE;TARGET_PATH;TARGET_DESCRIPTION;TARGET_ORGANIZATION_NAME;WBM_NAME;WBM_OBJECTNUMBER;WEIGHT;MATERIAL;REPLACES;NOTE" /* STRING */,
+                                        	hasHeader: true /* BOOLEAN */,
+                                        	longitudeField: undefined /* NUMBER */,
+                                        	dateFormat: undefined /* STRING */,
+                                        	fileRepository: me.name /* THINGNAME */,
+                                        	latitudeField: undefined /* NUMBER */,
+                                        	fieldDelimiter: "|" /* STRING */,
+                                        	stringDelimiter: undefined /* STRING */,
+                                        	dataShape: "PDS_Migration_DataShape_Metadata" /* DATASHAPENAME */
+                                        });
+                                        ]]>
+                                        </code>
+                                    </Row>
+                                </Rows>
+                            </ConfigurationTable>
+                        </ConfigurationTables>
+                    </ServiceImplementation>
+                    <ServiceImplementation
+                     description=""
+                     handlerName="Script"
+                     name="ReplaceMetadata">
+                        <ConfigurationTables>
+                            <ConfigurationTable
+                             dataShapeName=""
+                             description=""
+                             isMultiRow="false"
+                             name="Script"
+                             ordinal="0">
+                                <DataShape>
+                                    <FieldDefinitions>
+                                        <FieldDefinition
+                                         baseType="STRING"
+                                         description="code"
+                                         name="code"
+                                         ordinal="0"></FieldDefinition>
+                                    </FieldDefinitions>
+                                </DataShape>
+                                <Rows>
+                                    <Row>
+                                        <code>
+                                        <![CDATA[
+                                        //Reset statistics
+                                        me.MatchedCount = 0;
+                                        me.UnmatchedCount = 0;
+                                        me.OnlyLibraryName = 0;
+                                        me.TotalCount = 0;
+                                        
+                                        //Read metadata
+                                        let metaData = me.ReadMetadata({ Filename: MetadataFilename });
+                                        
+                                        //Add Instance and generic to table
+                                        for(let i = 0; i< metaData.rows.length; i++){
+                                        	let row = metaData.getRow(i);
+                                            let wbmsrcfile = row.WBMSRCFILE;
+                                            let wbmSrcFilePath = wbmsrcfile.split("\\");
+                                            row.INSTANCE = wbmSrcFilePath[2];
+                                        	row.GENERIC = wbmSrcFilePath[1] + "." + row.INSTANCE.split(".").pop();
+                                        }
+                                        
+                                        //Read file attributes
+                                        let fileAttributes = me.ReadFileAttributes({ Filename: FileAttributesFilename });
+                                        
+                                        //Find instance and merge data
+                                        for(let i = 0; i< fileAttributes.rows.length; i++){
+                                            let file = fileAttributes.getRow(i);
+                                            
+                                            //Search object
+                                        	let object = new Object();
+                                            object.INSTANCE = file.ModelName.toUpperCase();
+                                            object.GENERIC = file.LibraryName.toUpperCase();
+                                            
+                                            let meta = metaData.Find(object);
+                                            if(meta != null){
+                                                file.revision = meta.REVISION;
+                                                file.iteration = meta.ITERATION;
+                                                file.lifecycle_state = meta.LIFECYCLESTATE;
+                                                //file.lifecycle = 
+                                        		file.TARGET_CONTAINER_TYPE = meta.TARGET_CONTAINER_TYPE;
+                                        		file.WBM_NAME = meta.WBM_NAME;
+                                                file.create_ts = meta.CREATE_TS;
+                                                file.TARGET_ORGANIZATION_NAME = meta.TARGET_ORGANIZATION_NAME;
+                                                file.TARGET_DESCRIPTION = meta.TARGET_DESCRIPTION;
+                                        		file.TARGET_ITERATION_NOTE = meta.TARGET_ITERATION_NOTE;
+                                        		file.modifier_id = meta.MODIFIER_ID;
+                                        		file.TARGET_CONTAINER_NAME = meta.TARGET_CONTAINER_NAME;
+                                        		file.TARGET_PATH = meta.TARGET_PATH;
+                                        		file.WBM_OBJECTNUMBER = meta.WBM_OBJECTNUMBER;
+                                        		file.modify_ts = meta.MODIFY_TS;
+                                        		file.creator_id = meta.CREATOR_ID;
+                                                
+                                                //Custom
+                                                file.WEIGHT = meta.WEIGHT;
+                                                file.MATERIAL = meta.MATERIAL;
+                                                file.REPLACES = meta.REPLACES;
+                                                file.NOTE = meta.NOTE;
+                                                
+                                                me.MatchedCount++;
+                                            }else if(file.LibraryName.length > 0){
+                                                file.WBM_OBJECTNUMBER = file.ModelName.toUpperCase();
+                                                me.OnlyLibraryName++;
+                                        
+                                            }else{
+                                            	me.UnmatchedCount++;
+                                            }
+                                            me.TotalCount++;
+                                        }
+                                        
+                                        let url = me.WriteReplacedFileAttributes({	Data: fileAttributes /* INFOTABLE */, FileName: FileAttributesFilename });
+                                        
+                                        let result = url;
+                                        ]]>
+                                        </code>
+                                    </Row>
+                                </Rows>
+                            </ConfigurationTable>
+                        </ConfigurationTables>
+                    </ServiceImplementation>
+                    <ServiceImplementation
+                     description=""
+                     handlerName="Script"
+                     name="WriteReplacedFileAttributes">
+                        <ConfigurationTables>
+                            <ConfigurationTable
+                             dataShapeName=""
+                             description=""
+                             isMultiRow="false"
+                             name="Script"
+                             ordinal="0">
+                                <DataShape>
+                                    <FieldDefinitions>
+                                        <FieldDefinition
+                                         baseType="STRING"
+                                         description="code"
+                                         name="code"
+                                         ordinal="0"></FieldDefinition>
+                                    </FieldDefinitions>
+                                </DataShape>
+                                <Rows>
+                                    <Row>
+                                        <code>
+                                        <![CDATA[
+                                        let path = "FileAttributes/Updated/" + FileName;
+                                        
+                                        let result = "/Thingworx/FileRepositories/" + me.name + "/" + path;
+                                        try{
+                                            Resources["CSVParserFunctions"].WriteCSVFile({
+                                                path: path /* STRING */,
+                                                data: Data /* INFOTABLE */,
+                                                fileRepository: me.name /* THINGNAME */,
+                                                withHeader: true /* BOOLEAN */
+                                            });
+                                        }catch(err){
+                                            	throw new Error(err);
+                                            
+                                            }
+                                        ]]>
+                                        </code>
+                                    </Row>
+                                </Rows>
+                            </ConfigurationTable>
+                        </ConfigurationTables>
+                    </ServiceImplementation>
+                </ServiceImplementations>
+                <Subscriptions></Subscriptions>
+            </ThingShape>
+            <PropertyBindings></PropertyBindings>
+            <RemotePropertyBindings></RemotePropertyBindings>
+            <RemoteServiceBindings></RemoteServiceBindings>
+            <RemoteEventBindings></RemoteEventBindings>
+            <AlertConfigurations>
+                <AlertDefinitions
+                 name="MatchedCount"></AlertDefinitions>
+                <AlertDefinitions
+                 name="OnlyLibraryName"></AlertDefinitions>
+                <AlertDefinitions
+                 name="TotalCount"></AlertDefinitions>
+                <AlertDefinitions
+                 name="UnmatchedCount"></AlertDefinitions>
+            </AlertConfigurations>
+            <ImplementedShapes></ImplementedShapes>
+            <ThingProperties></ThingProperties>
+        </Thing>
+    </Things>
+</Entities>
