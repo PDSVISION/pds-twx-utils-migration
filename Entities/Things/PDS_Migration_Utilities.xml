@@ -2,7 +2,7 @@
 <Entities
  majorVersion="9"
  minorVersion="1"
- universal="">
+ universal="password">
     <Things>
         <Thing
          description=""
@@ -79,7 +79,7 @@
                 <ServiceDefinitions>
                     <ServiceDefinition
                      aspect.isAsync="false"
-                     category=""
+                     category="CSV"
                      description=""
                      isAllowOverride="false"
                      isLocalOnly="false"
@@ -104,7 +104,7 @@
                     </ServiceDefinition>
                     <ServiceDefinition
                      aspect.isAsync="false"
-                     category=""
+                     category="CSV"
                      description=""
                      isAllowOverride="false"
                      isLocalOnly="false"
@@ -129,7 +129,7 @@
                     </ServiceDefinition>
                     <ServiceDefinition
                      aspect.isAsync="false"
-                     category=""
+                     category="Main"
                      description=""
                      isAllowOverride="false"
                      isLocalOnly="false"
@@ -154,11 +154,32 @@
                              description=""
                              name="MetadataFilename"
                              ordinal="1"></FieldDefinition>
+                            <FieldDefinition
+                             baseType="STRING"
+                             description=""
+                             name="OrganizationName"
+                             ordinal="3"></FieldDefinition>
                         </ParameterDefinitions>
                     </ServiceDefinition>
                     <ServiceDefinition
                      aspect.isAsync="false"
                      category=""
+                     description=""
+                     isAllowOverride="false"
+                     isLocalOnly="false"
+                     isOpen="false"
+                     isPrivate="false"
+                     name="test">
+                        <ResultType
+                         baseType="STRING"
+                         description=""
+                         name="result"
+                         ordinal="0"></ResultType>
+                        <ParameterDefinitions></ParameterDefinitions>
+                    </ServiceDefinition>
+                    <ServiceDefinition
+                     aspect.isAsync="false"
+                     category="CSV"
                      description=""
                      isAllowOverride="false"
                      isLocalOnly="false"
@@ -219,9 +240,19 @@
                                     <Row>
                                         <code>
                                         <![CDATA[
+                                        let fileAttributeFields = DataShapes["PDS_Migration_DataShape_FileAttributes"].GetFieldDefinitions();
+                                        var columnMapping = "";
+                                        for(let i = 0; i<fileAttributeFields.rows.length; i++){
+                                        	let row = fileAttributeFields.getRow(i);
+                                            let fieldName = row.name;
+                                            let fieldType = row.baseType;
+                                            columnMapping += fieldName + ";";
+                                        }
+                                        columnMapping = columnMapping.substring(0, columnMapping.length - 1);
+                                        
                                         let result = Resources["CSVParserFunctions"].ReadCSVFile({
                                         	path: "FileAttributes/" + Filename /* STRING */,
-                                        	columnMappings: "cadId;sourceId;SourceLocation;SourceName;ModelName;LibraryName;Type;isTopGeneric;revision;iteration;lifecycle_state;lifecycle;TARGET_CONTAINER_TYPE;WBM_NAME;create_ts;TARGET_ORGANIZATION_NAME;TARGET_DESCRIPTION;TARGET_ITERATION_NOTE;modifier_id;TARGET_CONTAINER_NAME;TARGET_PATH;WBM_OBJECTNUMBER;modify_ts;creator_id;WEIGHT;MATERIAL;REPLACES;NOTE" /* STRING */,
+                                        	columnMappings: columnMapping, //"cadId;sourceId;SourceLocation;SourceName;ModelName;LibraryName;Type;isTopGeneric;revision;iteration;lifecycle_state;lifecycle;TARGET_CONTAINER_TYPE;WBM_NAME;create_ts;TARGET_ORGANIZATION_NAME;TARGET_DESCRIPTION;TARGET_ITERATION_NOTE;modifier_id;TARGET_CONTAINER_NAME;TARGET_PATH;WBM_OBJECTNUMBER;modify_ts;creator_id;WEIGHT;MATERIAL;REPLACES;NOTE" /* STRING */,
                                         	hasHeader: true /* BOOLEAN */,
                                         	longitudeField: undefined /* NUMBER */,
                                         	dateFormat: undefined /* STRING */,
@@ -229,7 +260,7 @@
                                         	latitudeField: undefined /* NUMBER */,
                                         	fieldDelimiter: "," /* STRING */,
                                         	stringDelimiter: undefined /* STRING */,
-                                        	dataShape: "" /* DATASHAPENAME */
+                                        	dataShape: "PDS_Migration_DataShape_FileAttributes" /* DATASHAPENAME */
                                         });
                                         ]]>
                                         </code>
@@ -270,16 +301,16 @@
                                         <code>
                                         <![CDATA[
                                         let result = Resources["CSVParserFunctions"].ReadCSVFile({
-                                        	path: "Metadata/" + Filename /* STRING */,
-                                        	columnMappings: "WBMSRCFILE;LIFECYCLESTATE;REVISION;ITERATION;CREATE_TS;CREATOR_ID;MODIFY_TS;MODIFIER_ID;TARGET_CONTAINER_NAME;TARGET_CONTAINER_TYPE;TARGET_ITERATION_NOTE;TARGET_PATH;TARGET_DESCRIPTION;TARGET_ORGANIZATION_NAME;WBM_NAME;WBM_OBJECTNUMBER;WEIGHT;MATERIAL;REPLACES;NOTE" /* STRING */,
-                                        	hasHeader: true /* BOOLEAN */,
-                                        	longitudeField: undefined /* NUMBER */,
-                                        	dateFormat: undefined /* STRING */,
-                                        	fileRepository: me.name /* THINGNAME */,
-                                        	latitudeField: undefined /* NUMBER */,
-                                        	fieldDelimiter: "|" /* STRING */,
-                                        	stringDelimiter: undefined /* STRING */,
-                                        	dataShape: "PDS_Migration_DataShape_Metadata" /* DATASHAPENAME */
+                                            path: "Metadata/" + Filename /* STRING */,
+                                            columnMappings: "WBMSRCFILE;LIFECYCLESTATE;REVISION;ITERATION;CREATE_TS;CREATOR_ID;MODIFY_TS;MODIFIER_ID;TARGET_CONTAINER_NAME;TARGET_CONTAINER_TYPE;TARGET_ITERATION_NOTE;TARGET_PATH;TARGET_DESCRIPTION;TARGET_ORGANIZATION_NAME;WBM_NAME;WBM_OBJECTNUMBER;WEIGHT;MATERIAL;REPLACES;NOTE" /* STRING */,
+                                            hasHeader: true /* BOOLEAN */,
+                                            longitudeField: undefined /* NUMBER */,
+                                            dateFormat: undefined /* STRING */,
+                                            fileRepository: me.name /* THINGNAME */,
+                                            latitudeField: undefined /* NUMBER */,
+                                            fieldDelimiter: "|" /* STRING */,
+                                            stringDelimiter: undefined /* STRING */,
+                                            dataShape: "PDS_Migration_DataShape_Metadata" /* DATASHAPENAME */
                                         });
                                         ]]>
                                         </code>
@@ -319,19 +350,39 @@
                                         me.TotalCount = 0;
                                         
                                         //Read metadata
-                                        let metaData = me.ReadMetadata({ Filename: MetadataFilename });
-                                        
+                                        let metaData;
+                                        if(MetadataFilename != undefined && MetadataFilename.length > 0){
+                                        	metaData = me.ReadMetadata({ Filename: MetadataFilename });
+                                        }else{
+                                        	logger.debug("Metadata - No file: {}", MetadataFilename);
+                                        }
+                                            
                                         //Add Instance and generic to table
-                                        for(let i = 0; i< metaData.rows.length; i++){
-                                        	let row = metaData.getRow(i);
-                                            let wbmsrcfile = row.WBMSRCFILE;
-                                            let wbmSrcFilePath = wbmsrcfile.split("\\");
-                                            row.INSTANCE = wbmSrcFilePath[2];
-                                        	row.GENERIC = wbmSrcFilePath[1] + "." + row.INSTANCE.split(".").pop();
+                                        if(metaData != null){
+                                            for(let i = 0; i< metaData.rows.length; i++){
+                                                let row = metaData.getRow(i);
+                                                let wbmsrcfile = row.WBMSRCFILE;
+                                                let wbmSrcFilePath = wbmsrcfile.split("\\");
+                                                row.INSTANCE = wbmSrcFilePath[2];
+                                                row.GENERIC = wbmSrcFilePath[1] + "." + row.INSTANCE.split(".").pop();
+                                            }
                                         }
                                         
                                         //Read file attributes
                                         let fileAttributes = me.ReadFileAttributes({ Filename: FileAttributesFilename });
+                                        
+                                        // result: INFOTABLE dataShape: "FieldDefinition"
+                                        let fileAttributeFields = DataShapes["PDS_Migration_DataShape_FileAttributes"].GetFieldDefinitions();
+                                        
+                                        
+                                        for(let i = 0; i<fileAttributeFields.rows.length; i++){
+                                        	let row = fileAttributeFields.getRow(i);
+                                            let fieldName = row.name;
+                                            let fieldType = row.baseType;
+                                            fileAttributes.AddField({name: fieldName, baseType: fieldType, ordinal: i});
+                                        }
+                                        
+                                        
                                         
                                         //Find instance and merge data
                                         for(let i = 0; i< fileAttributes.rows.length; i++){
@@ -342,7 +393,11 @@
                                             object.INSTANCE = file.ModelName.toUpperCase();
                                             object.GENERIC = file.LibraryName.toUpperCase();
                                             
-                                            let meta = metaData.Find(object);
+                                            //Replace fileAttributes data with data from metadata
+                                            let meta;
+                                            if(metaData != null){
+                                            	meta = metaData.Find(object);
+                                            }
                                             if(meta != null){
                                                 file.revision = meta.REVISION;
                                                 file.iteration = meta.ITERATION;
@@ -369,18 +424,73 @@
                                                 
                                                 me.MatchedCount++;
                                             }else if(file.LibraryName.length > 0){
-                                                file.WBM_OBJECTNUMBER = file.ModelName.toUpperCase();
+                                                file.WBM_OBJECTNUMBER = file.ModelName.toUpperCase() + "." + file.Type.toUpperCase();//file.SourceName.split('.').pop().toUpperCase();
                                                 me.OnlyLibraryName++;
                                         
                                             }else{
                                             	me.UnmatchedCount++;
                                             }
+                                            
+                                            
+                                            //Replace empty values
+                                            if((file.TARGET_ORGANIZATION_NAME == undefined || file.TARGET_ORGANIZATION_NAME.length == 0) && OrganizationName != undefined && OrganizationName.length > 0){
+                                            	file.TARGET_ORGANIZATION_NAME = OrganizationName;
+                                            }
+                                            if(file.WBM_NAME == null || file.WBM_NAME.length == 0){
+                                            	file.WBM_NAME = file.ModelName; 
+                                            }
+                                            
+                                            if(file.WBM_OBJECTNUMBER == undefined || file.WBM_OBJECTNUMBER.length == 0){
+                                            	file.WBM_OBJECTNUMBER = file.SourceName.toUpperCase(); 
+                                            }
+                                            
                                             me.TotalCount++;
                                         }
                                         
                                         let url = me.WriteReplacedFileAttributes({	Data: fileAttributes /* INFOTABLE */, FileName: FileAttributesFilename });
                                         
                                         let result = url;
+                                        ]]>
+                                        </code>
+                                    </Row>
+                                </Rows>
+                            </ConfigurationTable>
+                        </ConfigurationTables>
+                    </ServiceImplementation>
+                    <ServiceImplementation
+                     description=""
+                     handlerName="Script"
+                     name="test">
+                        <ConfigurationTables>
+                            <ConfigurationTable
+                             dataShapeName=""
+                             description=""
+                             isMultiRow="false"
+                             name="Script"
+                             ordinal="0">
+                                <DataShape>
+                                    <FieldDefinitions>
+                                        <FieldDefinition
+                                         baseType="STRING"
+                                         description="code"
+                                         name="code"
+                                         ordinal="0"></FieldDefinition>
+                                    </FieldDefinitions>
+                                </DataShape>
+                                <Rows>
+                                    <Row>
+                                        <code>
+                                        <![CDATA[
+                                        let fileAttributeFields = DataShapes["PDS_Migration_DataShape_FileAttributes"].GetFieldDefinitions();
+                                        var columnMapping = "";
+                                        for(let i = 0; i<fileAttributeFields.rows.length; i++){
+                                        	let row = fileAttributeFields.getRow(i);
+                                            let fieldName = row.name;
+                                            let fieldType = row.baseType;
+                                            columnMapping += fieldName + ";";
+                                        }
+                                        columnMapping = columnMapping.substring(0, columnMapping.length - 1);
+                                        let result = columnMapping;
                                         ]]>
                                         </code>
                                     </Row>
